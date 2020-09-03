@@ -82,19 +82,24 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(point, num){
+function finalScore(callback, num){
 
-  const score = {Home: 0, Away:0};
-  return function(){
-
-    score.Home = score.Home + randomNum * num;
-    score.Away = score.Away + randomNum * num;
-    return score;
-
-    }
+  let home = 0
+  let away = 0
+  while (num > 0){
+    home = home + callback()
+    away = away + callback()
+    num--
   }
+  let results = {
+    'Home': home,
+    'Away': away
+  }
+  return results
+    }
   
-  console.log(finalScore(inning, 9))
+  
+  finalScore(inning, 9)
 
 /* Task 4: 
 
@@ -116,9 +121,26 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getInningScore(callback) {
+  let away = callback()
+  let home = callback()
+  let currentInning = {
+    'away': away,
+    'home': home
+  }
+  return currentInning
 }
 
+function scoreboard(callback1, callback2, num ) {
+  let awayScore = 0
+  let homeScore = 0
+  for (let i = 0; i < num; i++){
+   let currentInning = callback1(callback2)
+   console.log(`Inning ${i+1}: ${currentInning.away} - ${currentInning.home}`)
+   awayScore = awayScore + currentInning.away
+   homeScore = homeScore + currentInning.home
+  }
+  console.log(`Final Score: ${awayScore} - ${homeScore}`)
+}
 
+scoreboard(getInningScore, inning, 9)
