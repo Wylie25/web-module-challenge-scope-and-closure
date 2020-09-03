@@ -99,7 +99,7 @@ function finalScore(callback, num){
     }
   
   
-  finalScore(inning, 9)
+  console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
