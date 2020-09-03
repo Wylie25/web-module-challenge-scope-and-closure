@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+      Closure is when a function reaches out of its scope to acess a private Variable allowing colsure to take place.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+    Closure takes place at line 64 and 65.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+    The name dans roll will remain the same but the number rolled will change.
+
 c. What is the lexical scope of `newRoll`? 
+
+    Block level scope.
 
 ### Task 2c - Exit Ticket
 
