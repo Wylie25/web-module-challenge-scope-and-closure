@@ -27,11 +27,16 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *      
+ *      Counter1 will reset its count everytime it is invoked. While      counter 2 will continue its count everytime the function is invoked.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ *      Counter1 uses closure because it reaches outside the scope of the function
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ *      Counter1 would best be used in a situation where you wanted to run a set of counts and then reset the count the next time you invoked the function. WHile counter2 would best be used when you want to keep a grand count of things everytime you invoke the function again.
 */
 
 // counter1 code
@@ -56,12 +61,13 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(){
+  
+  const points = Math.floor(Math.random() * 3);
+  return points;
 
 }
-
+console.log(inning())
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -76,11 +82,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(point, num){
 
-  /*Code Here*/
+  const score = {Home: 0, Away:0};
+  return function(){
 
-}
+    score.Home = score.Home + randomNum * num;
+    score.Away = score.Away + randomNum * num;
+    return score;
+
+    }
+  }
+  
+  console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
